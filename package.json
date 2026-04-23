@@ -1,0 +1,11 @@
+{
+  "name": "backend_shoppyglobe",
+  "version": "1.0.0",
+  "description": "Backend for ShoppyGlobe- an e-commerce website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "himanshu_dutt",
+  "license": "ISC"
+}
