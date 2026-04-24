@@ -1,20 +1,23 @@
-const express = require("express")
-require("dotenv").config();
-const mongoose = require("mongoose")
+const express = require("express");
+const MongoData = require("./config/db");
 
-if(!process.env.MONGO_URI){
-    console.log("There is no MONGO_URI")
-}
-
-mongoose.connect(process.env.MONGO_URI)
-.then(()=> console.log("DB Connection successful"))
-.catch(err => console.log("Error in connection to DB", err))
 
 
 const app = express()
 
+app.use(express.json())
+
+app.get('/', (req, res) => {
+    res.send('ShoppyGlobe API running');
+});
+
 const PORT = 4000;
 
-app.listen(PORT, ()=> {
-    console.log(`Server is running on Port: ${PORT}`)
+
+MongoData().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on Port: ${PORT}`)
+    })
+}).catch((err) => {
+    console.log('failed to start the server because of DB error', err)
 })
