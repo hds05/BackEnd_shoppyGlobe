@@ -1,6 +1,6 @@
 const express = require("express");
 const MongoData = require("./config/db");
-
+const productRoutes = require('./routes/productsRoutes')
 
 
 const app = express()
@@ -21,3 +21,5 @@ MongoData().then(() => {
 }).catch((err) => {
     console.log('failed to start the server because of DB error', err)
 })
+
+app.use('/', productRoutes)
