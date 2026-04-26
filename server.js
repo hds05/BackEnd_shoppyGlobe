@@ -1,6 +1,9 @@
 const express = require("express");
 const MongoData = require("./config/db");
 const productRoutes = require('./routes/productsRoutes')
+const cartRoutes = require('./routes/cartRoutes')
+const authRoutes = require('./routes/authRoutes')
+require('dotenv').config();
 
 
 const app = express()
@@ -23,3 +26,5 @@ MongoData().then(() => {
 })
 
 app.use('/', productRoutes)
+app.use('/cart', cartRoutes)
+app.use('/auth', authRoutes)
